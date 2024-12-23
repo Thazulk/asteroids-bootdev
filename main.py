@@ -38,6 +38,11 @@ def main():
         screen.fill(BLACK)
         for sprite in updatable:
             sprite.update(dt)
+            if isinstance(sprite, Player):
+                for a in asteroid:
+                    if sprite.collides_with(a):
+                        print("Player hit asteroid!")
+                        running = False
         for sprite in drawable:
             sprite.draw(screen)
         pygame.display.flip()
