@@ -45,8 +45,14 @@ def main():
                 for a in asteroids:
                     if sprite.collides_with(a):
                         print("Player hit asteroid!")
-
                         running = False
+            if isinstance(sprite, Shot):
+                for a in asteroids:
+                    if sprite.collides_with(a):
+                        print("Shot hit asteroid!")
+                        sprite.kill()
+                        a.split()
+
         for sprite in drawable:
             sprite.draw(screen)
         pygame.display.flip()
